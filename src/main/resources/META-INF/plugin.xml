@@ -1,18 +1,24 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.marcinaman.hammerplugin</id>
-    <name>IntelliJ Platform Plugin hammer-plugin</name>
-    <vendor>marcinaman</vendor>
+    <id>com.github.marcinaman.hammer</id>
+    <name>Build Project Hammer</name>
+    <vendor>Marcin Aman</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.marcinaman.hammerplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.marcinaman.hammerplugin.services.MyProjectService"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.marcinaman.hammerplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.github.marcinaman.hammerplugin.listeners.BuildProjectAction"
+                class="com.github.marcinaman.hammerplugin.listeners.BuildProjectAction" text="Build Project"
+                description="Build project"
+                icon="AllIcons.Actions.Compile">
+            <!-- 223 -->
+            <add-to-group group-id="MainToolbarRight" anchor="first"/>
+            <!-- 222 -->
+            <add-to-group group-id="ExperimentalToolbarActions" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
